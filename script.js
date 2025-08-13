@@ -1,32 +1,41 @@
-let creditosTotales = 0;
+document.addEventListener("DOMContentLoaded", () => {
+    const courses = document.querySelectorAll(".course");
+    let totalCredits = 0;
 
-document.querySelectorAll(".curso").forEach(curso => {
-    // Clic para marcar/desmarcar como aprobado
-    curso.addEventListener("click", () => {
-        const creditos = parseInt(curso.getAttribute("data-creditos"));
-        if (curso.classList.contains("aprobado")) {
-            curso.classList.remove("aprobado");
-            creditosTotales -= creditos;
-        } else {
-            curso.classList.add("aprobado");
-            creditosTotales += creditos;
-        }
-        document.getElementById("creditos").textContent = creditosTotales;
-    });
+    // Mostrar créditos iniciales
+    const creditCounter = document.getElementById("credit-counter");
+    creditCounter.textContent = `Créditos totales: ${totalCredits}`;
 
-    // Resaltar prerequisitos al pasar el mouse
-    curso.addEventListener("mouseenter", () => {
-        const prereq = curso.getAttribute("data-prereq");
-        if (prereq) {
-            prereq.split(",").forEach(id => {
-                const cursoReq = document.querySelector(`.curso[data-id="${id}"]`);
-                if (cursoReq) cursoReq.classList.add("prereq-resaltado");
+    courses.forEach(course => {
+        course.addEventListener("click", () => {
+            // Alternar estado completado
+            course.classList.toggle("completed");
+            const credits = parseInt(course.dataset.credits);
+
+            if (course.classList.contains("completed")) {
+                totalCredits += credits;
+            } else {
+                totalCredits -= credits;
+            }
+
+            creditCounter.textContent = `Créditos totales: ${totalCredits}`;
+        });
+
+        // Resaltar prerrequisitos al pasar el mouse
+        course.addEventListener("mouseenter", () => {
+            const prereqs = course.dataset.prereqs ? course.dataset.prereqs.split(",") : [];
+            prereqs.forEach(prereqId => {
+                const prereqCourse = document.getElementById(prereqId.trim());
+                if (prereqCourse) {
+                    prereqCourse.classList.add("highlight");
+                }
             });
-        }
-    });
+        });
 
-    // Quitar resaltado al salir
-    curso.addEventListener("mouseleave", () => {
-        document.querySelectorAll(".curso").forEach(c => c.classList.remove("prereq-resaltado"));
+        course.addEventListener("mouseleave", () => {
+            document.querySelectorAll(".highlight").forEach(el => {
+                el.classList.remove("highlight");
+            });
+        });
     });
 });
