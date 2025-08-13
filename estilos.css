@@ -1,95 +1,124 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f9fc;
-    margin: 0;
-    padding: 0;
+/* --- Layout y tipografía --- */
+:root{
+  --azul-10:#f0f6ff;
+  --azul-20:#e1efff;
+  --azul-30:#cfe4ff;
+  --azul-50:#99c7ff;
+  --azul-70:#4d9cff;
+  --borde:#cbd5e1;
+  --ok:#b7e1b0;
+  --warn:#ffecb3;
 }
 
-header {
-    position: sticky;
-    top: 0;
-    background-color: #2b3d4f;
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+*{ box-sizing:border-box; }
+
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #f7f9fc;
+  color:#0f172a;
+  margin:0;
 }
 
-.main-container {
-    padding: 20px;
-    display: grid;
-    gap: 30px;
+h1{
+  text-align:center;
+  margin:24px 16px 8px;
+  color:#0b2545;
 }
 
-.year {
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+#mapa-cursos{
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
 }
 
-.year-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #2b3d4f;
-    margin-bottom: 10px;
+p{
+  text-align:center;
+  margin: 4px 16px 20px;
 }
 
-.cycles {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+/* --- Contenedor por ciclo (tu HTML usa .anio por cada ciclo) --- */
+.anio{
+  background:#fff;
+  border:1px solid var(--borde);
+  border-radius:16px;
+  padding:14px 14px 18px;
+  margin: 16px 0;
+  box-shadow: 0 6px 18px rgba(15,23,42,.06);
 }
 
-.cycle {
-    background: #f0f4f8;
-    padding: 10px;
-    border-radius: 8px;
+.anio > h2{
+  margin: 0 0 10px;
+  color:#0b2545;
+  font-size: 18px;
 }
 
-.cycle-title {
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #2b3d4f;
+/* --- Grid de cursos --- */
+.ciclo{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap:12px;
 }
 
-.course {
-    background: #d9e6f2;
-    padding: 8px;
-    margin-bottom: 8px;
-    border-radius: 6px;
-    transition: 0.3s;
-    cursor: pointer;
+/* --- Tarjeta de curso --- */
+.curso{
+  position:relative;
+  background: linear-gradient(180deg, var(--azul-20), var(--azul-10));
+  border:1px solid var(--azul-30);
+  border-radius:12px;
+  padding:12px 12px 10px;
+  min-height:72px;
+  cursor:pointer;
+  transition: transform .15s ease, box-shadow .15s ease, filter .2s ease, opacity .2s ease;
+  will-change: transform;
 }
 
-.course.completed {
-    background: #b7e1b0;
+.curso::after{
+  content: attr(data-creditos) " créditos";
+  position:absolute;
+  right:10px; bottom:8px;
+  font-size:12px;
+  opacity:.8;
 }
 
-.course:hover {
-    transform: scale(1.03);
+.curso:hover{ 
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(56,97,251,.12);
 }
 
-.course.highlight {
-    background: #ffecb3 !important;
+.curso.completado{
+  background: var(--ok);
+  border-color: #2e7d32;
 }
 
-.course-name {
-    font-weight: bold;
-    font-size: 14px;
+.curso.resaltado{
+  background: var(--warn);
+  border-color: #e0b300;
 }
 
-.course-prereq {
-    font-size: 12px;
-    color: #555;
+/* --- Bloqueo por prerrequisitos --- */
+.curso.locked{
+  cursor: not-allowed;
+  opacity: .55;
+  filter: grayscale(.15);
+  box-shadow:none;
 }
 
-.course-credits {
-    font-size: 12px;
-    color: #333;
-    font-style: italic;
+.curso.locked:hover{
+  transform:none;
+}
+
+/* Icono de candado */
+.curso.locked::before{
+  content:"🔒";
+  position:absolute;
+  left:10px; bottom:8px;
+  font-size:13px;
+  opacity:.9;
+}
+
+/* Accesibilidad al navegar con teclado */
+.curso:focus{
+  outline: 2px solid var(--azul-70);
+  outline-offset:2px;
+  /* para poder enfocarla con tab si alguien lo necesita */
 }
