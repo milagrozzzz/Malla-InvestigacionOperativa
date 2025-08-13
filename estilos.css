@@ -1,49 +1,71 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    color: #333;
+    background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
 h1 {
     text-align: center;
+    margin-top: 20px;
 }
 
-.anio {
-    background: #fff;
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+}
+
+.year {
+    background-color: white;
     padding: 15px;
-    margin: 20px auto;
-    border-radius: 8px;
-    max-width: 900px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.ciclo {
+.cycle {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-top: 10px;
 }
 
-.curso {
-    background: #dfe7fd;
-    border-radius: 6px;
+.course {
     padding: 10px;
-    flex: 1 1 200px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    min-width: 150px;
     text-align: center;
+    transition: all 0.3s ease;
     cursor: pointer;
-    transition: 0.3s;
-    border: 2px solid transparent;
 }
 
-.curso:hover {
-    background: #b6ccfe;
+.course.completed {
+    background-color: #d4edda;
+    border-color: #28a745;
 }
 
-.curso.aprobado {
-    background: #a8e6cf;
-    border-color: #00b894;
+.course.highlight {
+    background-color: #ffeeba;
+    border-color: #ffc107;
 }
+
+.course:hover {
+    transform: scale(1.05);
+}
+
+#credit-counter {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    width: fit-content;
+    font-weight: bold;
+}
+
 
 .curso.prereq-resaltado {
     border-color: #ff7675;
