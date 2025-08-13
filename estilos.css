@@ -1,73 +1,95 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f7f9fc;
     margin: 0;
     padding: 0;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 20px;
+header {
+    position: sticky;
+    top: 0;
+    background-color: #2b3d4f;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.main-container {
     padding: 20px;
+    display: grid;
+    gap: 30px;
 }
 
 .year {
-    background-color: white;
+    background: #fff;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+
+.year-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2b3d4f;
+    margin-bottom: 10px;
+}
+
+.cycles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
 }
 
 .cycle {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
+    background: #f0f4f8;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.cycle-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #2b3d4f;
 }
 
 .course {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    min-width: 150px;
-    text-align: center;
-    transition: all 0.3s ease;
+    background: #d9e6f2;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    transition: 0.3s;
     cursor: pointer;
 }
 
 .course.completed {
-    background-color: #d4edda;
-    border-color: #28a745;
-}
-
-.course.highlight {
-    background-color: #ffeeba;
-    border-color: #ffc107;
+    background: #b7e1b0;
 }
 
 .course:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
-#credit-counter {
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin: 20px auto;
-    width: fit-content;
+.course.highlight {
+    background: #ffecb3 !important;
+}
+
+.course-name {
     font-weight: bold;
+    font-size: 14px;
 }
 
+.course-prereq {
+    font-size: 12px;
+    color: #555;
+}
 
-.curso.prereq-resaltado {
-    border-color: #ff7675;
-    background: #ffeaa7;
+.course-credits {
+    font-size: 12px;
+    color: #333;
+    font-style: italic;
 }
