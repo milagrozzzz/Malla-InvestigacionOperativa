@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Malla Interactiva</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Malla Interactiva - Investigación Operativa</h1>
+    <p>Haz clic en los cursos que ya aprobaste. Los prerequisitos se resaltarán al pasar el mouse. Créditos totales aprobados: <span id="creditos">0</span></p>
+
+    <div id="mapa-cursos">
+        <!-- Año 1 -->
+        <div class="anio">
+            <h2>Año 1 - Ciclo 1</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="MATB" data-creditos="4">Matemática Básica</div>
+                <div class="curso" data-id="LENG" data-creditos="4">Lenguaje</div>
+                <div class="curso" data-id="GEN" data-creditos="2">Género y Sociedad</div>
+                <div class="curso" data-id="MEU" data-creditos="3">Métodos de Estudio Universitario</div>
+                <div class="curso" data-id="GP" data-creditos="3">Gestión Personal</div>
+                <div class="curso" data-id="CALI" data-creditos="4">Cálculo I</div>
+                <div class="curso" data-id="BIO" data-creditos="4">Biología</div>
+            </div>
+        </div>
+
+        <div class="anio">
+            <h2>Año 1 - Ciclo 2</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="ECOGEN" data-creditos="2">Economía General</div>
+                <div class="curso" data-id="FUND" data-creditos="3">Fundamentos de Investigación Científica</div>
+                <div class="curso" data-id="MADS" data-creditos="4" data-prereq="BIO">Medio Ambiente y Desarrollo Sostenible</div>
+                <div class="curso" data-id="RNM" data-creditos="3">Realidad Nacional y Mundial</div>
+                <div class="curso" data-id="CALII" data-creditos="4" data-prereq="CALI">Cálculo II</div>
+                <div class="curso" data-id="QOI" data-creditos="4">Química Orgánica e Inorgánica</div>
+                <div class="curso" data-id="FISI" data-creditos="4">Física General</div>
+            </div>
+        </div>
+
+      <!-- Año 2 -->
+        <div class="anio">
+            <h2>Año 2 - Ciclo 3</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="CALIII" data-creditos="5" data-prereq="CALII">Cálculo III</div>
+                <div class="curso" data-id="ALG" data-creditos="6" data-prereq="MATB">Álgebra Lineal</div>
+                <div class="curso" data-id="EST" data-creditos="6" data-prereq="CALII, MATB">Estadística y Probabilidad</div>
+                <div class="curso" data-id="ECO" data-creditos="4" data-prereq="MADS, RNM">Economía</div>
+                <div class="curso" data-id="MDIOI" data-creditos="5" data-prereq="CALI">Modelos Determinísticos en Invesrigación Operativa I</div>
+            </div>
+        </div>
+
+        <div class="anio">
+            <h2>Año 2 - Ciclo 4</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="PROGRA" data-creditos="6" data-prereq="MDIOI">Programación de Computadoras</div>
+                <div class="curso" data-id="INFE" data-creditos="6" data-prereq="EST">Inferencia Estadística</div>
+                <div class="curso" data-id="IEDO" data-creditos="4" data-prereq="ALG, CALIII">Introducción a las Ecuaciones Diferenciales Ordinarias</div>
+                <div class="curso" data-id="PLE" data-creditos="6" data-prereq="ALG">Programación Lineal y Entera</div>
+            </div>
+        </div>
+
+       <!-- Año 3 -->
+        <div class="anio">
+            <h2>Año 3 - Ciclo 5</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="TADS" data-creditos="6" data-prereq="MDIOI">Teoría, Análisis y Diseño de Sistemas</div>
+                <div class="curso" data-id="MDIOII" data-creditos="5" data-prereq="MDIOI, PLE">Modelos Determinísticos en Investigación Operativa II</div>
+                <div class="curso" data-id="MATEFI" data-creditos="4" data-prereq="ALG, ECO, PLE, CALII">Matemática Financiera</div>
+                <div class="curso" data-id="MENU" data-creditos="6" data-prereq="PROGRA, ALG">Métodos Numéricos</div>
+                <div class="curso" data-id="PREPRAI" data-creditos="2" data-prereq="PROGRA, PLE, MDIOI">Práctica Pre-Profesional Módulo I</div>
+            </div>
+        </div>
+
+        <div class="anio">
+            <h2>Año 3 - Ciclo 6</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="MPIOI" data-creditos="6" data-prereq="MDIOI, EST">Modelos Probabilísticos en Investigación Operativa I</div>
+                <div class="curso" data-id="PROC" data-creditos="6" data-prereq="EST, IEDO">Procesos Estocásticos</div>
+                <div class="curso" data-id="GEST" data-creditos="4" data-prereq="TADS">Gestión de Sistemas Organizacionales</div>
+                <div class="curso" data-id="SEMI" data-creditos="4" data-prereq="MDIOII">Seminario de Investigación I</div>
+            </div>
+        </div>
+
+      <!-- Año 4 -->
+        <div class="anio">
+            <h2>Año 4 - Ciclo 7</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="MPIOI" data-creditos="6" data-prereq="MPIOI">Modelos Probabilísticos en Investigación Operativa II</div>
+                <div class="curso" data-id="SIMU" data-creditos="6" data-prereq="PROC, INFE, MPIOI">Simulación de Sistemas</div>
+                <div class="curso" data-id="TEOG" data-creditos="6" data-prereq="PLE">Teoría de Grafos</div>
+            </div>
+        </div>
+
+        <div class="anio">
+            <h2>Año 4 - Ciclo 8</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="HYM" data-creditos="6" data-prereq="PROGRA, TEOG">Heurísticas y Metaheurísticas</div>
+                <div class="curso" data-id="TEOD" data-creditos="6" data-prereq="MATEFI, INFE">Teoría de Decisiones</div>
+                <div class="curso" data-id="PNLD" data-creditos="6" data-prereq="CALIII, PLE, MENU">Programación No Lineal y Dinámica</div>
+                <div class="curso" data-id="SEMII" data-creditos="3" data-prereq="SEMI">Seminario de Investigación II</div>
+                <div class="curso" data-id="PREPRAII" data-creditos="2" data-prereq="PREPRAI, SIMU, MPIOII, TEOG">Práctica Pre-Profesional Módulo II</div>
+            </div>
+        </div>
+
+      <!-- Año 5 -->
+        <div class="anio">
+            <h2>Año 5 - Ciclo 9</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="MODECO" data-creditos="5" data-prereq="INFE, MATEFI, ECO">Modelos Econométricos</div>
+                <div class="curso" data-id="TESISI" data-creditos="6" data-prereq="SIMU, SEMII, TEOG, TEOD, PNLD">Seminario de Tesis de Investigación Operativa I</div>
+                <div class="curso" data-id="CASOS" data-creditos="4" data-prereq="HYM, TEOG, PNLD, TEOD, SIMU">Estudio de Casos en Investigación Operativa</div>
+                <div class="curso" data-id="PROY" data-creditos="3" data-prereq="GEST, MATEFI">Formulación y Gestión de Proyectos</div>
+            </div>
+        </div>
+
+        <div class="anio">
+            <h2>Año 5 - Ciclo 10</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="SERIES" data-creditos="4" data-prereq="MODECO">Series Cronológicas</div>
+                <div class="curso" data-id="TESISII" data-creditos="6" data-prereq="TESISI">Seminario de Tesis de Investigación Operativa II</div>
+                <div class="curso" data-id="PREPRAIII" data-creditos="2" data-prereq="PREPRAII">Práctica Pre-Profesional Módulo III</div>
+            </div>
+        </div>
+
+
+        <!-- Ciclo 0 -->
+        <div class="anio">
+            <h2>Ciclo 0 (Electivos)</h2>
+            <div class="ciclo">
+                <div class="curso" data-id="GESCA" data-creditos="3" data-prereq="GEST">Gestión de la Calidad</div>
+                <div class="curso" data-id="INDGES" data-creditos="3" data-prereq="GESCA">Indicadores de Gestión</div>
+                <div class="curso" data-id="TECMEJ" data-creditos="3" data-prereq="GESCA">Técnicas de Mejoramiento de la Calidad</div>
+                <div class="curso" data-id="MODTRANS" data-creditos="3" data-prereq="MDIOII">Modelos de Transporte</div>
+                <div class="curso" data-id="REDOPT" data-creditos="3" data-prereq="HYM">Redes de Optimización</div>
+                <div class="curso" data-id="LOGCAD" data-creditos="3" data-prereq="MDIOI">Logística y Cadena de Suministro</div>
+                <div class="curso" data-id="IA" data-creditos="3" data-prereq="TEOG">Inteligencia Artificial</div>
+                <div class="curso" data-id="ANNEG" data-creditos="3" data-prereq="IA">Analítica de Negocios</div>
+                <div class="curso" data-id="MINEDAT" data-creditos="3" data-prereq="TEOG,PNLD,PROGRA">Introducción a la Minería de Datos</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
